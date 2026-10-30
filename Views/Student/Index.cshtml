@@ -1,29 +1,70 @@
-@model List<StudentMVC.Models.Student>
+@model StudentMVC.Models.Student
 
 @{
-    ViewData["Title"] = "DANH SACH SINH VIEN";
+    ViewData["Title"] = "Quản lý sinh viên";
+    var students =
+        ViewBag.Students as List<StudentMVC.Models.Student>;
 }
 
-<H2>DANH SACH SINH VIEN</H2>
+<h2>Nhập thông tin sinh viên</h2>
 
-<table class="table table-bordered table-striped">
+<form asp-controller="Student" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="name">Họ tên</label>
+        <input asp-for="name" class="form-control" />
+        <span asp-validation-for="name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="age">Tuổi</label>
+        <input asp-for="age" type="number"
+               min="1" max="120" class="form-control" />
+        <span asp-validation-for="age" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="email">Email</label>
+        <input asp-for="email" type="email" class="form-control" />
+        <span asp-validation-for="email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Thêm sinh viên
+    </button>
+</form>
+
+<hr />
+
+<h2>Danh sách sinh viên</h2>
+
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>age</th>
-            <h1>email</h1>
+            <th>Id</th>
+            <th>Họ tên</th>
+            <th>Tuổi</th>
+            <th>Email</th>
         </tr>
     </thead>
+
     <tbody>
-        @foreach(var student in Model)
+        @if (students == null || students.Count == 0)
         {
             <tr>
-                <td>@student.id</td>
-                <td>@student.name</td>
-                <td>@student.age</td>
-                <td>@student.email</td>
+                <td colspan="4">Chưa có sinh viên.</td>
             </tr>
+        }
+        else
+        {
+            foreach (var student in students)
+            {
+                <tr>
+                    <td>@student.id</td>
+                    <td>@student.name</td>
+                    <td>@student.age</td>
+                    <td>@student.email</td>
+                </tr>
+            }
         }
     </tbody>
 </table>

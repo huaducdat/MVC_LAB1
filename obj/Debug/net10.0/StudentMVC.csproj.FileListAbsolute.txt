@@ -95,3 +95,4 @@
 /Users/huyentran/Desktop/MVC_Learning/StudentMVC/obj/Debug/net10.0/StudentMVC.pdb
 /Users/huyentran/Desktop/MVC_Learning/StudentMVC/obj/Debug/net10.0/StudentMVC.genruntimeconfig.cache
 /Users/huyentran/Desktop/MVC_Learning/StudentMVC/obj/Debug/net10.0/ref/StudentMVC.dll
+/Users/huyentran/Desktop/MVC_Learning/StudentMVC/obj/Debug/net10.0/StudentMVC.sourcelink.json
